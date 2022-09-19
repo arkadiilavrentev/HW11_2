@@ -5,7 +5,6 @@ import java.util.regex.Pattern;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        System.out.println("Аддис-Абеба");
 
         File file = new File("voyna_i_mir.txt");
 
@@ -13,7 +12,7 @@ public class Main {
         ArrayList<String> lines = parser.parse(file);
 
         Writer out = new OutputStreamWriter(System.out, "UTF-8");
-        // Выводить будем через метод класса OutputStreamWriter, потому что кодировка по умолчанию метода System.out.println - windows-1251
+        // Р’С‹РІРѕРґРёС‚СЊ Р±СѓРґРµРј С‡РµСЂРµР· РјРµС‚РѕРґ РєР»Р°СЃСЃР° OutputStreamWriter, РїРѕС‚РѕРјСѓ С‡С‚Рѕ РєРѕРґРёСЂРѕРІРєР° РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ РјРµС‚РѕРґР° System.out.println - windows-1251
 
         for (String line : lines) {
             out.write(line + "\n");
@@ -22,13 +21,13 @@ public class Main {
         out.write("\n");
 
 
-        out.write("Поиск слова страдание в первом томе Войны и Мира\n");
-        String input = "страдани";      // Будем искать слово без учёта последних символов
+        out.write("РџРѕРёСЃРє СЃР»РѕРІР° СЃС‚СЂР°РґР°РЅРёРµ РІ РїРµСЂРІРѕРј С‚РѕРјРµ Р’РѕР№РЅС‹ Рё РњРёСЂР°" + "\n");
+        String input = "СЃС‚СЂР°РґР°РЅРё";      // Р‘СѓРґРµРј РёСЃРєР°С‚СЊ СЃР»РѕРІРѕ Р±РµР· СѓС‡С‘С‚Р° РїРѕСЃР»РµРґРЅРёС… СЃРёРјРІРѕР»РѕРІ
 
         int count = 0;
         String[] words = null;
         for (String s : lines) {
-            words = s.toLowerCase().split("\\b");       // Будем искать слово без учёта регистра. \\b - регулярное выражение, соответствующее границе слова
+            words = s.toLowerCase().split("\\b");       // Р‘СѓРґРµРј РёСЃРєР°С‚СЊ СЃР»РѕРІРѕ Р±РµР· СѓС‡С‘С‚Р° СЂРµРіРёСЃС‚СЂР°. \\b - СЂРµРіСѓР»СЏСЂРЅРѕРµ РІС‹СЂР°Р¶РµРЅРёРµ, СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РµРµ РіСЂР°РЅРёС†Рµ СЃР»РѕРІР°
             for (String word : words)
             {
                 if (word.startsWith(input))
@@ -40,18 +39,18 @@ public class Main {
         }
         if(count!=0)
         {
-            out.write("Данное слово встречается в файле " + Integer.toString(count)+ " раз\n");
+            out.write("Р”Р°РЅРЅРѕРµ СЃР»РѕРІРѕ РІСЃС‚СЂРµС‡Р°РµС‚СЃСЏ РІ С„Р°Р№Р»Рµ " + Integer.toString(count)+ " СЂР°Р·\n");
         }
         else
         {
-            out.write("Данное слово не встречается в файле\n");
+            out.write("Р”Р°РЅРЅРѕРµ СЃР»РѕРІРѕ РЅРµ РІСЃС‚СЂРµС‡Р°РµС‚СЃСЏ РІ С„Р°Р№Р»Рµ\n");
         }
 
         out.write("\n");
 
 
         count = 0;
-        out.write("Поиск слова страдание в первом томе Войны и Мира через метод Scanner\n");
+        out.write("РџРѕРёСЃРє СЃР»РѕРІР° СЃС‚СЂР°РґР°РЅРёРµ РІ РїРµСЂРІРѕРј С‚РѕРјРµ Р’РѕР№РЅС‹ Рё РњРёСЂР° С‡РµСЂРµР· РјРµС‚РѕРґ Scanner\n");
         Scanner scanner = new Scanner(file).useDelimiter(Pattern.compile(" "));
         words = null;
         while(scanner.hasNext()){
@@ -65,11 +64,11 @@ public class Main {
         }
         if(count!=0)
         {
-            out.write("Данное слово встречается в файле " + Integer.toString(count)+ " раз\n");
+            out.write("Р”Р°РЅРЅРѕРµ СЃР»РѕРІРѕ РІСЃС‚СЂРµС‡Р°РµС‚СЃСЏ РІ С„Р°Р№Р»Рµ " + Integer.toString(count)+ " СЂР°Р·\n");
         }
         else
         {
-            out.write("Данное слово не встречается в файле\n");
+            out.write("Р”Р°РЅРЅРѕРµ СЃР»РѕРІРѕ РЅРµ РІСЃС‚СЂРµС‡Р°РµС‚СЃСЏ РІ С„Р°Р№Р»Рµ\n");
         }
         scanner.close();
         out.close();
