@@ -11,17 +11,14 @@ public class Main {
         Parser parser = new Parser();
         ArrayList<String> lines = parser.parse(file);
 
-        Writer out = new OutputStreamWriter(System.out, "UTF-8");
-        // Выводить будем через метод класса OutputStreamWriter, потому что кодировка по умолчанию метода System.out.println - windows-1251
-
         for (String line : lines) {
-            out.write(line + "\n");
+            System.out.println(line);
         }
 
-        out.write("\n");
+        System.out.println("");
 
 
-        out.write("Поиск слова страдание в первом томе Войны и Мира" + "\n");
+        System.out.println("Поиск слова страдание в первом томе Войны и Мира");
         String input = "страдани";      // Будем искать слово без учёта последних символов
 
         int count = 0;
@@ -39,18 +36,18 @@ public class Main {
         }
         if(count!=0)
         {
-            out.write("Данное слово встречается в файле " + Integer.toString(count)+ " раз\n");
+            System.out.println("Данное слово встречается в файле " + Integer.toString(count)+ " раз");
         }
         else
         {
-            out.write("Данное слово не встречается в файле\n");
+            System.out.println("Данное слово не встречается в файле");
         }
 
-        out.write("\n");
+        System.out.println("");
 
 
         count = 0;
-        out.write("Поиск слова страдание в первом томе Войны и Мира через метод Scanner\n");
+        System.out.println("Поиск слова страдание в первом томе Войны и Мира через метод Scanner");
         Scanner scanner = new Scanner(file).useDelimiter(Pattern.compile(" "));
         words = null;
         while(scanner.hasNext()){
@@ -64,13 +61,12 @@ public class Main {
         }
         if(count!=0)
         {
-            out.write("Данное слово встречается в файле " + Integer.toString(count)+ " раз\n");
+            System.out.println("Данное слово встречается в файле " + Integer.toString(count)+ " раз");
         }
         else
         {
-            out.write("Данное слово не встречается в файле\n");
+            System.out.println("Данное слово не встречается в файле");
         }
         scanner.close();
-        out.close();
     }
 }
